@@ -3,6 +3,11 @@ const logger = require('winston');
 const app = express();
 const port = 5000;
 
+app.get('/healthz', (request, response) => {
+    response.send(`Healthy!`);
+    logger.info('Healthcheck');
+});
+
 app.get('/', (request, response) => {
     response.send(`Hello, I'm alive`);
     logger.info('Responded to GET request on /');
